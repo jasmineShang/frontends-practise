@@ -56,7 +56,7 @@
   <script>
     $(function () {
       // 获取图书列表数据
-      function getBookList() {
+      function getBooks() {
         $.get('http://www.liulongbin.top:3006/api/getbooks', function (res) {
           if (res.status !== 200) return alert('获取数据失败！')
 
@@ -68,7 +68,7 @@
         })
       }
 
-      getBookList()
+      getBooks()
 
       /* $('.del').on('click', function () {
         console.log('ok')
@@ -79,7 +79,7 @@
         var id = $(this).attr('data-id')
         $.get('http://www.liulongbin.top:3006/api/delbook', { id: id }, function (res) {
           if (res.status !== 200) return alert('删除图书失败！')
-          getBookList()
+          getBooks()
         })
       })
 
@@ -93,7 +93,7 @@
 
         $.post('http://www.liulongbin.top:3006/api/addbook', { bookname: bookname, author: author, publisher: publisher }, function (res) {
           if (res.status !== 201) return alert('添加图书失败！')
-          getBookList()
+          getBooks()
           $('#iptBookname').val('')
           $('#iptAuthor').val('')
           $('#iptPublisher').val('')
