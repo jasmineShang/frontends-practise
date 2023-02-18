@@ -87,7 +87,12 @@
             var id = $(this).attr('data-id')
             $.ajax({
                 url: 'http://www.liulongbin.top:3006/api/delbook?id=' + id,
-                dataType: 'jsonp',
+                dataType: 'json',
+                headers: {
+                    'Access-Control-Allow-Methods': 'GET,POST',
+                    'Access-Control-Allow-Headers': '*'
+                },
+                crossDomain: true,
                 success: function (res) {
                     if (res.status !== 200) return alert('删除图书失败！')
                     getBooks()
@@ -105,10 +110,15 @@
 
             $.ajax({
                 url: 'http://www.liulongbin.top:3006/api/addbook',
+                type: 'post',
                 data: {
                     "bookname": bookname,
                     "author": author,
                     "publisher": publisher
+                },
+                headers: {
+                    'Access-Control-Allow-Methods': 'GET,POST',
+                    'Access-Control-Allow-Headers': '*'
                 },
                 dataType: 'json',
                 crossDomain: true,
