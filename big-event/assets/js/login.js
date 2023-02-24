@@ -48,8 +48,10 @@ $(function () {
                     return layer.msg('登陆失败！')
                 }
                 layer.msg('登陆成功！')
+                console.log(res.token)
                 localStorage.setItem('token', res.token)
-                location.herf = 'index.html'
+                console.log(localStorage.getItem("token"))
+                location.href = './index.html'
             }
         })
     })
