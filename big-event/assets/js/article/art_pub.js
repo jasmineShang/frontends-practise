@@ -1,6 +1,7 @@
 $(function () {
     const layer = layui.layer
     const form = layui.form
+    const layedit = layui.layedit
 
     initCate()
     initEditor()
@@ -32,7 +33,7 @@ $(function () {
     // 3. 初始化裁剪区域
     $image.cropper(options)
 
-    $('#btnChooseImage').on('cick', function () {
+    $('#btnChooseImage').on('click', function () {
         $('#coverFile').click()
     })
 
@@ -70,19 +71,39 @@ $(function () {
     })
 
     function publishArticle(fd) {
-         $.ajax({
-             method: 'POST',
-             url: '/my/article/add',
-             data: fd,
-             contentType: false,
-             processData: false,
-             success: function (res) {
-                 if (res.status !== 0) {
-                     return layer.msg('发布文章失败！')
-                 }
-                 layer.msg('发布文章成功！')
-                 location.href = './art_list.html'
-             }
-         })
+        $.ajax({
+            method: 'POST',
+            url: '/my/article/add',
+            data: fd,
+            contentType: false,
+            processData: false,
+            success: function (res) {
+                if (res.status !== 0) {
+                    return layer.msg('发布文章失败！')
+                }
+                layer.msg('发布文章成功！')
+                location.href = './art_list.html'
+            }
+        })
+    }
+
+    let id = localStorage.getItem('id')
+    if (id !== null) {
+        $.ajax({
+            method: 'GET',
+            url: '/my/article/' + id,
+            success: function (res) {
+                if (res.status !== 0) {
+                    return // layer.msg('获取文章详情失败！')
+                }
+                const art_details = res.data
+                $('[name=title]').val(art_details.title);
+                $('[name=cate_id]').val(art_details.cate_id);
+                // const index = layedit.build('content')
+                // layedit.setContent(index, art_details.content, false)
+                form.render()
+                localStorage.setItem('id', null)
+            }
+        })
     }
 })

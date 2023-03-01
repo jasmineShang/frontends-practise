@@ -13,7 +13,7 @@ $(function () {
         const mm = padZero(dt.getMinutes())
         const ss = padZero(dt.getSeconds())
 
-        return y + '-' + m + '-' + d + ' ' + hh + ':' + 'mm' + ':' + ss
+        return y + '-' + m + '-' + d + ' ' + hh + ':' + mm + ':' + ss
     }
 
     function padZero(n) {
@@ -112,6 +112,12 @@ $(function () {
             })
             layer.close(index);
         });
+    })
+
+    $('tbody').on('click', '.btn-edit', function () {
+        const id = $(this).attr('data-id')
+        localStorage.setItem('id', id)
+        location.href = './art_pub.html'
     })
 })
 
