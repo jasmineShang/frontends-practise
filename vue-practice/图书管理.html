@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .grid {
+            width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .row {
+            padding: 5px 0;
+            border-bottom: 1px solid red;
+            background-color: pink;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            padding: 5px 0;
+            background-color: pink;
+        }
+
+        tbody td {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+    <div class="grid">
+        <h1>图书管理</h1>
+        <div class="row">
+            <label for="">编号：</label>
+            <input type="text">
+            <label for="">名称：</label>
+            <input type="text">
+            <button>提交</button>
+        </div>
+        <div class="row">
+            图书总数：
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(item, index) in bookList">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.date}}</td>
+                <td>
+                    <a href="">编辑</a>|<a>删除</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            bookList: [{
+                id: 1,
+                name: '三国演义',
+                date: 2525609975000
+            }, {
+                id: 2,
+                name: '水浒传',
+                date: 2525609975000
+            }, {
+                id: 3,
+                name: '红楼梦',
+                date: 2525609975000
+            }, {
+                id: 4,
+                name: '西游记',
+                date: 2525609975000
+            }]
+        }
+    })
+</script>
+</body>
+</html>
