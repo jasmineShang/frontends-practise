@@ -2,6 +2,8 @@ function getCommentList() {
     $.ajax({
         method: 'GET',
         url: 'http://www.liulongbin.top:3006/api/cmtlist',
+        dataType: 'jsonp',
+        crossDomain: true,
         success: function (res) {
             if (res.status !== 200) return alert('获取评论列表失败！')
             var rows = []
@@ -27,16 +29,32 @@ $(function () {
     $('#formAddCmt').submit(function (e) {
         e.preventDefault()
         var data = $(this).serialize()
-        $.post(
-            'http://www.liulongbin.top:3006/api/addcmt',
-            data,
-            function (res) {
+        // $.post(
+        //     'http://www.liulongbin.top:3006/api/addcmt',
+        //     data,
+        //     function (res) {
+        //         if (res.status !== 201) {
+        //             return alert('发表评论失败！')
+        //         }
+        //         getCommentList()
+        //         $('#formAddCmt')[0].reset()
+        //     }
+        // )
+        $.ajax({
+            method: 'POST',
+            url: 'http://www.liulongbin.top:3006/api/addcmt',
+            data: {
+                "data": data,
+            },
+            dataType: 'json',
+            crossDomain: true,
+            success: function (res) {
                 if (res.status !== 201) {
-                    return alert('发表评论失败！')
+                    return alert('发表评论失败')
                 }
                 getCommentList()
                 $('#formAddCmt')[0].reset()
             }
-        )
+        })
     })
 })
