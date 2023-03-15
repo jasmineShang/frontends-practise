@@ -5,7 +5,7 @@
    1. [百分比布局练习——京东](./mobile-layout-practice/jd/index.html)
    2. [flex布局练习——携程](./mobile-layout-practice/xie-cheng/index.html)
    3. [rem布局练习——苏宁](./mobile-layout-practice/su-ning/index.html)
-3.[响应式布局练习——阿里百秀]()
+3. [响应式布局练习——阿里百秀](./alibaixiu/index.html)
 4. [ajax练习](./ajax-practice)
    1. [图书管理系统](./ajax-practice/libraryManagementSystem.html)
    2. [聊天机器人](./ajax-practice/chatbots/chatbots.html)
