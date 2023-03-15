@@ -18,5 +18,6 @@
    9. [ToDoList—最简单的待办事项列表](./jQuery-practice/todolist/tudolist.html)
 5. [ajax练习](./ajax-practice)
    1. [图书管理系统](./ajax-practice/libraryManagementSystem.html)
-   2. [聊天机器人](./ajax-practice/chatbots/chatbots.html)
+   2. [评论列表案例](./ajax-practice/评论列表/评论列表.html)
+   3. [淘宝搜索案例](./ajax-practice/淘宝搜索案例/index.html)
 6. [大事件](./big-event)
